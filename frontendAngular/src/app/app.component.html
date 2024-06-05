@@ -1,0 +1,14 @@
+<aside *ngIf="showNavbar" class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 bg-white" [ngClass]="{'show': !(sidenavVisible$ | async)}">
+  <div *ngIf="loggedIn">
+    <app-sidebar></app-sidebar>
+  </div>
+</aside>
+<main [ngClass]="{'main-content-full': !(sidenavVisible$ | async), 'main-content position-relative max-height-vh-100 h-100 border-radius-lg': sidenavVisible$ | async}">
+  <div *ngIf="loggedIn || showNavbar">
+    <app-navbar></app-navbar>
+  </div>
+  <router-outlet></router-outlet>
+</main>
+
+
+

@@ -1,0 +1,47 @@
+/* Default styles for the sidenav */
+.sidenav {
+  width: 100px;
+  position: fixed;
+  top: 0;
+  left: 15px;
+  height: 95%;
+  margin-left: 20px;
+  background-color: #fff;
+  z-index: 1; /* Initial z-index for larger screens */
+  transition: visibility 0.3s ease, transform 0.3s ease;
+  transform: translateX(-150%);
+  visibility: hidden; /* Hide the sidebar */
+}
+
+/* Show sidenav */
+.sidenav.show {
+  transform: translateX(-15px);
+  visibility: visible; /* Make the sidebar visible */
+}
+
+.main-content-full {
+  margin-left: 21% !important; /* Reset margin for smaller screens */
+}
+
+/* Styles for smaller screens */
+@media (max-width: 600px) {
+  .sidenav {
+    z-index: 2; /* Higher z-index to overlay the content */
+    position: fixed;
+    transform: translateX(-150%);
+    left: 15px;
+    padding-right: 55px ;
+  }
+
+  .sidenav.show {
+    transform: translateX(-30px);
+    visibility: visible; /* Make the sidebar visible */
+  }
+
+  .main-content {
+    margin-left: 0 !important; /* Reset margin for smaller screens */
+  }
+}
+
+
+

@@ -1,0 +1,17 @@
+.card{
+  z-index: 2;
+  position: fixed;
+  transform: translateX(50%);
+  left: 15px;
+  padding-right: 55px ;
+  width: 400px;
+}
+
+@media (max-width: 600px){
+  .card{
+    position: fixed;
+    transform: translateX(5%);
+    width: 400px;
+    top: 10%;
+  }
+}
