@@ -1,7 +1,7 @@
 ---
 deployment:
   tasks:
-    - export DEPLOY_PATH=/home/your_cpanel_username/public_html
+    - export DEPLOY_PATH=/home/bikp5295/public_html
     - cd $DEPLOY_PATH
     - if [ ! -d "backend" ]; then mkdir backend; fi
     - if [ ! -d "frontend" ]; then mkdir frontend; fi
