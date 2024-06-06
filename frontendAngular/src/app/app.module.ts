@@ -18,6 +18,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { RouterLinkActive } from '@angular/router';
 import { NavbarService } from './services/navbar.service';
+import { KasdanbankComponent } from './components/kasdanbank/kasdanbank.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { NavbarService } from './services/navbar.service';
     SignupComponent,
     ProfileComponent,
     DashboardComponent,
-    SidebarComponent
+    SidebarComponent,
+    KasdanbankComponent
   ],
   imports: [
     BrowserModule,
