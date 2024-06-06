@@ -17,9 +17,16 @@ import { TokenInterceptor } from './services/token-interceptor.service';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { RouterLinkActive } from '@angular/router';
-import { NavbarService } from './services/navbar.service';
 import { KasdanbankComponent } from './components/kasdanbank/kasdanbank.component';
 import { TransaksiComponent } from './components/transaksi/transaksi.component';
+
+import { NavbarService } from './services/navbar.service';
+import { PemasukanComponent } from './components/transaksi/pemasukan/pemasukan.component';
+import { PengeluaranComponent } from './components/transaksi/pengeluaran/pengeluaran.component';
+import { HutangComponent } from './components/transaksi/hutang/hutang.component';
+import { TanamModalComponent } from './components/transaksi/tanam-modal/tanam-modal.component';
+import { TarikModalComponent } from './components/transaksi/tarik-modal/tarik-modal.component';
+import { TransferUangComponent } from './components/transaksi/transfer-uang/transfer-uang.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +38,13 @@ import { TransaksiComponent } from './components/transaksi/transaksi.component';
     DashboardComponent,
     SidebarComponent,
     KasdanbankComponent,
-    TransaksiComponent
+    TransaksiComponent,
+    PemasukanComponent,
+    PengeluaranComponent,
+    HutangComponent,
+    TanamModalComponent,
+    TarikModalComponent,
+    TransferUangComponent
   ],
   imports: [
     BrowserModule,
@@ -46,11 +59,13 @@ import { TransaksiComponent } from './components/transaksi/transaksi.component';
     RouterLinkActive,
   ],
   providers: [
-    NavbarService,{
+    NavbarService,
+    {
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptor,
     multi: true,
-  }],
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

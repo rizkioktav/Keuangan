@@ -9,6 +9,8 @@ import { Router } from '@angular/router';
 })
 export class SidebarComponent implements OnInit{
   public loggedIn: boolean = false;
+  showSubmenu: boolean = false;
+  
   constructor(public Auth: AuthService, private router:Router){}
 
   ngOnInit():void{

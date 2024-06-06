@@ -1,0 +1,37 @@
+.card-hover-menu {
+  position: absolute;
+  top: 43%; /* Adjust this value to change the distance from the top */
+  left: 40%; /* Adjust this value to change the distance from the right */
+  z-index: 6; /* Make sure it's above other elements */
+  background-color: #ffffff; /* Background color of the card */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Box shadow for a subtle effect */
+  border-radius: 6px; /* Rounded corners for the card */
+  padding: 8px; /* Padding inside the card */
+}
+
+.card-hover-menu a {
+  display: block;
+  padding: 6px 12px;
+  color: #333333; /* Text color of the submenu items */
+  text-decoration: none;
+  font-size: 14px; /* Adjust font size */
+}
+
+.card-hover-menu a:hover {
+  background-color: #f2f2f2; /* Background color on hover */
+}
+
+@media screen and (max-width: 768px) {
+  .card-hover-menu {
+    top: 30%; /* Distance from the top on mobile */
+    left: 40%; /* Center the menu horizontally */
+    padding: 10px 0; /* Adjust padding for mobile */
+    border-radius: 0; /* Remove border radius */
+    box-shadow: none; /* Remove box shadow */
+  }
+
+  .card-hover-menu a {
+    padding: 6px 12px; /* Adjust padding for mobile */
+    font-size: 14px;
+  }
+}
