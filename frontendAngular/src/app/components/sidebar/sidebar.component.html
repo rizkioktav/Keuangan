@@ -91,14 +91,13 @@
         </a>
         <div class="card-hover-menu" *ngIf="showSubmenu">
           <!-- Submenu Content -->
-          <a class="dropdown-item" routerLink="pemasukan">Pemasukan</a>
-          <a class="dropdown-item" routerLink="pengeluaran">Pengeluaran</a>
-          <a class="dropdown-item" routerLink="hutang">Hutang</a>
-          <a class="dropdown-item" routerLink="tanam-modal">Tanam Modal</a>
-          <a class="dropdown-item" routerLink="tarik-modal">Tarik Modal</a>
-          <a class="dropdown-item" routerLink="transfer-uang">Transfer Uang</a>
+          <a class="dropdown-item" routerLink="pemasukan" *ngIf="loggedIn" routerLinkActive="active">Pemasukan</a>
+          <a class="dropdown-item" routerLink="pengeluaran" *ngIf="loggedIn" routerLinkActive="active">Pengeluaran</a>
+          <a class="dropdown-item" routerLink="hutang" *ngIf="loggedIn" routerLinkActive="active">Hutang</a>
+          <a class="dropdown-item" routerLink="tanam-modal" *ngIf="loggedIn" routerLinkActive="active">Tanam Modal</a>
+          <a class="dropdown-item" routerLink="tarik-modal" *ngIf="loggedIn" routerLinkActive="active">Tarik Modal</a>
+          <a class="dropdown-item" routerLink="transfer-uang" *ngIf="loggedIn" routerLinkActive="active">Transfer Uang</a>
         </div>
       </li>
-      
     </ul>
   </div>

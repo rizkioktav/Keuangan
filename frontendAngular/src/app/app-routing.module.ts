@@ -9,6 +9,14 @@ import { BeforeLoginService } from './services/before-login.service';
 import { KasdanbankComponent } from './components/kasdanbank/kasdanbank.component';
 import { TransaksiComponent } from './components/transaksi/transaksi.component';
 
+//child of transaksiComponent
+import { PemasukanComponent } from './components/transaksi/pemasukan/pemasukan.component';
+import { PengeluaranComponent } from './components/transaksi/pengeluaran/pengeluaran.component';
+import { HutangComponent } from './components/transaksi/hutang/hutang.component';
+import { TanamModalComponent } from './components/transaksi/tanam-modal/tanam-modal.component';
+import { TarikModalComponent } from './components/transaksi/tarik-modal/tarik-modal.component';
+import { TransferUangComponent } from './components/transaksi/transfer-uang/transfer-uang.component';
+
 const routes: Routes = [
   {
     path: '',
@@ -48,7 +56,15 @@ const routes: Routes = [
     component: TransaksiComponent,
     canActivate: [AfterLoginService],
     data: { title: 'Transaksi' },
-  }
+  },
+  // transaksi component page //
+  { path: 'pemasukan', component: PemasukanComponent, canActivate: [AfterLoginService], data: { title: 'Transaksi / Pemasukan' }, },
+  { path: 'pengeluaran', component: PengeluaranComponent, canActivate: [AfterLoginService], data: { title: 'Transaksi / Pengeluaran' }, },
+  { path: 'hutang', component: HutangComponent, canActivate: [AfterLoginService], data: { title: 'Transaksi / Hutang' }, },
+  { path: 'tanam-modal', component: TanamModalComponent, canActivate: [AfterLoginService], data: { title: 'Transaksi / Tanam Modal' },  },
+  { path: 'tarik-modal', component: TarikModalComponent, canActivate: [AfterLoginService], data: { title: 'Transaksi / Tarik Modal' },  },
+  { path: 'transfer-uang', component: TransferUangComponent, canActivate: [AfterLoginService], data: { title: 'Transaksi / Transfer Uang' },  },
+  // end of transaksi component page //
 
 ];
 
