@@ -7,6 +7,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AfterLoginService } from './services/after-login.service';
 import { BeforeLoginService } from './services/before-login.service';
 import { KasdanbankComponent } from './components/kasdanbank/kasdanbank.component';
+import { TransaksiComponent } from './components/transaksi/transaksi.component';
 
 const routes: Routes = [
   {
@@ -41,6 +42,12 @@ const routes: Routes = [
     component: KasdanbankComponent,
     canActivate: [AfterLoginService],
     data: { title: 'Kas dan Bank' },
+  },
+  {
+    path: 'transaksi',
+    component: TransaksiComponent,
+    canActivate: [AfterLoginService],
+    data: { title: 'Transaksi' },
   }
 
 ];
