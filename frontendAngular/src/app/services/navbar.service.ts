@@ -7,8 +7,10 @@ import { filter, map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class NavbarService {
-  private pageTitleSubject: BehaviorSubject<string> = new BehaviorSubject<string>('Dashboard');
+  private pageTitleSubject: BehaviorSubject<string> = new BehaviorSubject<string>('');
   public pageTitle$: Observable<string> = this.pageTitleSubject.asObservable();
+  private pageSubtitleSubject: BehaviorSubject<string> = new BehaviorSubject('');
+  public pageSubtitle$: Observable<string> = this.pageSubtitleSubject.asObservable();
 
   private sidenavVisibleSource: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   public sidenavVisible$: Observable<boolean> = this.sidenavVisibleSource.asObservable();
@@ -24,16 +26,17 @@ export class NavbarService {
           if (child.firstChild) {
             child = child.firstChild;
           } else if (child.snapshot.data && child.snapshot.data['title']) {
-            return child.snapshot.data['title'];
+            return { title: child.snapshot.data['title'], subtitle: child.snapshot.data['subtitle'] || '' };
           } else {
-            return 'Dashboard'; 
+            return { title: '', subtitle: '' };
           }
         }
-        return 'Dashboard'; 
+        return { title: '', subtitle: '' };
       })
-    ).subscribe(title => {
+    ).subscribe(({ title, subtitle }) => {
       this.pageTitleSubject.next(title);
-    });    
+      this.pageSubtitleSubject.next(subtitle);
+    });   
   }
   toggleSidenav() {
     console.log('Toggling sidenav visibility');

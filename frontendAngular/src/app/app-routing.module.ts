@@ -58,12 +58,12 @@ const routes: Routes = [
     data: { title: 'Transaksi' },
   },
   // transaksi component page //
-  { path: 'pemasukan', component: PemasukanComponent, canActivate: [AfterLoginService], data: { title: 'Transaksi / Pemasukan' }, },
-  { path: 'pengeluaran', component: PengeluaranComponent, canActivate: [AfterLoginService], data: { title: 'Transaksi / Pengeluaran' }, },
-  { path: 'hutang', component: HutangComponent, canActivate: [AfterLoginService], data: { title: 'Transaksi / Hutang' }, },
-  { path: 'tanam-modal', component: TanamModalComponent, canActivate: [AfterLoginService], data: { title: 'Transaksi / Tanam Modal' },  },
-  { path: 'tarik-modal', component: TarikModalComponent, canActivate: [AfterLoginService], data: { title: 'Transaksi / Tarik Modal' },  },
-  { path: 'transfer-uang', component: TransferUangComponent, canActivate: [AfterLoginService], data: { title: 'Transaksi / Transfer Uang' },  },
+  { path: 'pemasukan', component: PemasukanComponent, canActivate: [AfterLoginService], data: {title: 'Transaksi', subtitle: 'Transaksi / Pemasukan' }, },
+  { path: 'pengeluaran', component: PengeluaranComponent, canActivate: [AfterLoginService], data: {title: 'Transaksi', subtitle: 'Transaksi / Pengeluaran' }, },
+  { path: 'hutang', component: HutangComponent, canActivate: [AfterLoginService], data: {title: 'Transaksi', subtitle: 'Transaksi / Hutang' }, },
+  { path: 'tanam-modal', component: TanamModalComponent, canActivate: [AfterLoginService], data: {title: 'Transaksi', subtitle: 'Transaksi / Tanam Modal' },  },
+  { path: 'tarik-modal', component: TarikModalComponent, canActivate: [AfterLoginService], data: {title: 'Transaksi', subtitle: 'Transaksi / Tarik Modal' },  },
+  { path: 'transfer-uang', component: TransferUangComponent, canActivate: [AfterLoginService], data: {title: 'Transaksi', subtitle: 'Transaksi / Transfer Uang' },  },
   // end of transaksi component page //
 
 ];

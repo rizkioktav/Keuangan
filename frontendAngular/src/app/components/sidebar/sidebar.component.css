@@ -1,7 +1,7 @@
 .card-hover-menu {
   position: absolute;
-  top: 43%; /* Adjust this value to change the distance from the top */
-  left: 40%; /* Adjust this value to change the distance from the right */
+  top: 50%; /* Adjust this value to change the distance from the top */
+  left: 45%; /* Adjust this value to change the distance from the right */
   z-index: 6; /* Make sure it's above other elements */
   background-color: #ffffff; /* Background color of the card */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Box shadow for a subtle effect */

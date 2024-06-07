@@ -12,6 +12,7 @@ import { NavbarService } from '../../services/navbar.service';
 export class NavbarComponent implements OnInit {
   public loggedIn: boolean = false;
   public pageTitle: string = '';
+  public pageSubtitle: string = '';
   showConfigurator: boolean = false;
   constructor(private Auth:AuthService, private router:Router, private Token:TokenService, private navbarService: NavbarService) {}
 
@@ -24,6 +25,10 @@ export class NavbarComponent implements OnInit {
     this.navbarService.pageTitle$.subscribe(title => {
       this.pageTitle = title;
     });
+
+    this.navbarService.pageSubtitle$.subscribe(subtitle => {
+      this.pageSubtitle = subtitle;
+    });  
   }
   logout(event:MouseEvent){
     event.preventDefault();
