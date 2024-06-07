@@ -1,0 +1,20 @@
+---
+deployment:
+  tasks:
+    - export DEPLOY_PATH=/home/bikp5295/public_html
+    - cd $DEPLOY_PATH
+    - if [ ! -d "backend" ]; then mkdir backend; fi
+    - if [ ! -d "frontend" ]; then mkdir frontend; fi
+    - rsync -av --exclude='node_modules' --exclude='vendor' --exclude='storage' backend/ $DEPLOY_PATH/backend/
+    - rsync -av --exclude='node_modules' frontend/ $DEPLOY_PATH/frontend/
+    - cd $DEPLOY_PATH/backend
+    - composer install --no-dev --optimize-autoloader --prefer-dist --no-interaction
+    - cp .env.example .env
+    - php artisan key:generate
+    - php artisan migrate --force
+    - php artisan config:cache
+    - cd $DEPLOY_PATH/frontend
+    - npm ci
+    - npm run build
+    - rm -rf $DEPLOY_PATH/public/*
+    - cp -r dist/* $DEPLOY_PATH/public/
