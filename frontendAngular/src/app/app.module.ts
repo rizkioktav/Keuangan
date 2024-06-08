@@ -27,6 +27,7 @@ import { HutangComponent } from './components/transaksi/hutang/hutang.component'
 import { TanamModalComponent } from './components/transaksi/tanam-modal/tanam-modal.component';
 import { TarikModalComponent } from './components/transaksi/tarik-modal/tarik-modal.component';
 import { TransferUangComponent } from './components/transaksi/transfer-uang/transfer-uang.component';
+import { PiutangComponent } from './components/transaksi/piutang/piutang.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { TransferUangComponent } from './components/transaksi/transfer-uang/tran
     HutangComponent,
     TanamModalComponent,
     TarikModalComponent,
-    TransferUangComponent
+    TransferUangComponent,
+    PiutangComponent
   ],
   imports: [
     BrowserModule,

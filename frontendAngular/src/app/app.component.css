@@ -10,24 +10,24 @@
   z-index: 1; /* Initial z-index for larger screens */
   transition: visibility 0.3s ease, transform 0.3s ease;
   transform: translateX(-150%);
-  visibility: hidden; /* Hide the sidebar */
+  visibility: hidden;
 }
 
 /* Show sidenav */
 .sidenav.show {
   transform: translateX(-15px);
-  visibility: visible; /* Make the sidebar visible */
+  visibility: visible; 
 }
 
 .main-content-full {
-  margin-left: 21% !important; /* Reset margin for smaller screens */
+  margin-left: 21% !important; 
 }
 
 /* Styles for smaller screens */
 @media (max-width: 600px) {
   .sidenav {
-    z-index: 2; /* Higher z-index to overlay the content */
-    position: fixed;
+    z-index: 3; 
+    position: absolute;
     transform: translateX(-150%);
     left: 15px;
     padding-right: 55px ;
@@ -35,11 +35,11 @@
 
   .sidenav.show {
     transform: translateX(-30px);
-    visibility: visible; /* Make the sidebar visible */
+    visibility: visible;
   }
 
   .main-content {
-    margin-left: 0 !important; /* Reset margin for smaller screens */
+    margin-left: 0 !important;
   }
 }
 
