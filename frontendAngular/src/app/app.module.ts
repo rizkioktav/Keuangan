@@ -28,6 +28,8 @@ import { TanamModalComponent } from './components/transaksi/tanam-modal/tanam-mo
 import { TarikModalComponent } from './components/transaksi/tarik-modal/tarik-modal.component';
 import { TransferUangComponent } from './components/transaksi/transfer-uang/transfer-uang.component';
 import { PiutangComponent } from './components/transaksi/piutang/piutang.component';
+import { DataMasterComponent } from './components/data-master/data-master.component';
+import { LaporanComponent } from './components/laporan/laporan.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,9 @@ import { PiutangComponent } from './components/transaksi/piutang/piutang.compone
     TanamModalComponent,
     TarikModalComponent,
     TransferUangComponent,
-    PiutangComponent
+    PiutangComponent,
+    DataMasterComponent,
+    LaporanComponent
   ],
   imports: [
     BrowserModule,

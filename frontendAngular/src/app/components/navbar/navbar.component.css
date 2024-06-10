@@ -3,15 +3,14 @@
   bottom: 0px;
   left: 300px; /* Menempatkannya di bagian paling kanan */
   width: 300px; /* Sesuaikan dengan lebar sidebar */
-  z-index: 1000; /* Agar card berada di depan konten utama dan navbar */
+  z-index: 2; /* Agar card berada di depan konten utama dan navbar */
 }
-/* 
+
 .navbar {
-  position: fixed;
-  z-index: 3;
   align-items: center;
   justify-items: center;
-} */
+  background-color: white;
+}
 
 /* #navbarBlur {
   left: 50%;

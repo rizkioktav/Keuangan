@@ -8,6 +8,8 @@ import { AfterLoginService } from './services/after-login.service';
 import { BeforeLoginService } from './services/before-login.service';
 import { KasdanbankComponent } from './components/kasdanbank/kasdanbank.component';
 import { TransaksiComponent } from './components/transaksi/transaksi.component';
+import { DataMasterComponent } from './components/data-master/data-master.component';
+import { LaporanComponent } from './components/laporan/laporan.component';
 
 //child of transaksiComponent
 import { PemasukanComponent } from './components/transaksi/pemasukan/pemasukan.component';
@@ -67,7 +69,18 @@ const routes: Routes = [
   { path: 'tarik-modal', component: TarikModalComponent, canActivate: [AfterLoginService], data: {title: 'Transaksi', subtitle: 'Transaksi / Tarik Modal' },  },
   { path: 'transfer-uang', component: TransferUangComponent, canActivate: [AfterLoginService], data: {title: 'Transaksi', subtitle: 'Transaksi / Transfer Uang' },  },
   // end of transaksi component page //
-
+  {
+    path: 'data-master',
+    component: DataMasterComponent,
+    canActivate: [AfterLoginService],
+    data: {title: 'Master Data', subtitle: 'Master Data'}
+  },
+  {
+    path: 'laporan',
+    component: LaporanComponent,
+    canActivate: [AfterLoginService],
+    data: {title: 'Laporan', subtitle: 'Laporan'},
+  }
 ];
 
 @NgModule({

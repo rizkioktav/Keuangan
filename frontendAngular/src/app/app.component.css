@@ -1,39 +1,37 @@
-/* Default styles for the sidenav */
-.sidenav {
-  width: 100px;
+.sidebar {
   position: fixed;
-  top: 0;
+  top: 80px;
   left: 15px;
-  height: 95%;
+  height: 90%;
   margin-left: 20px;
-  background-color: #fff;
-  z-index: 1; /* Initial z-index for larger screens */
+  z-index: 2;
   transition: visibility 0.3s ease, transform 0.3s ease;
   transform: translateX(-150%);
   visibility: hidden;
 }
 
-/* Show sidenav */
-.sidenav.show {
+/* Show sidebar */
+.sidebar.show {
   transform: translateX(-15px);
   visibility: visible; 
 }
 
 .main-content-full {
-  margin-left: 21% !important; 
+  margin-left: 18% !important; 
 }
 
 /* Styles for smaller screens */
 @media (max-width: 600px) {
-  .sidenav {
-    z-index: 3; 
+  .sidebar {
+    z-index: 2; 
     position: absolute;
     transform: translateX(-150%);
     left: 15px;
     padding-right: 55px ;
+    background-color: white ;
   }
 
-  .sidenav.show {
+  .sidebar.show {
     transform: translateX(-30px);
     visibility: visible;
   }

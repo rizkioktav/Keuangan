@@ -1,23 +1,40 @@
 .card-hover-menu {
-  position: fixed;
+  position: absolute;
   top: 50%;
-  left: 35%;
-  background-color: #ffffff; 
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+  left: 32%;
   border-radius: 6px;
   padding: 8px; 
+  z-index: 5;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); 
 }
 
 .card-hover-menu a {
   display: block;
   padding: 6px 12px;
-  color: #333333;
+  color: #1c1b62;
   text-decoration: none;
   font-size: 14px; 
 }
 
 .card-hover-menu a:hover {
   background-color: #f2f2f2; 
+}
+.navbar-brand{
+  height: 15%;
+  z-index: 3;
+  top: -70px;
+}
+.navbar-brand-img{
+  height: 50px;
+}
+.navbar-vertical {
+  overflow-y: auto; 
+  background-color: transparent;
+}
+.border-custom{
+  height: 10px;
+  width: 155px;
+  box-shadow: 0 2px 20px rgb(105, 104, 104); 
 }
 
 @media screen and (max-width: 768px) {
@@ -34,5 +51,14 @@
   .card-hover-menu a {
     padding: 6px 12px;
     font-size: 14px;
+  }
+  .navbar-brand{
+    height: 15%;
+    z-index: 3;
+    top: -75px;
+    background-color: white;
+  }
+  .navbar-brand-img{
+    height: 50px;
   }
 }
