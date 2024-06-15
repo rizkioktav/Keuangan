@@ -47,15 +47,23 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
     border-radius: 6px;
   }
-
   .card-hover-menu a {
     padding: 6px 12px;
     font-size: 14px;
+  }
+  .navbar{
+    top: 30px;
+    height: fit-content;
+    position: fixed;
   }
   .navbar-brand{
     height: 15%;
     z-index: 3;
     top: -75px;
+    background-color: white;
+  }
+  .navbar-vertical {
+    overflow-y: auto; 
     background-color: white;
   }
   .navbar-brand-img{

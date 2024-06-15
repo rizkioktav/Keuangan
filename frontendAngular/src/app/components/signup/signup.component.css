@@ -1,17 +1,35 @@
 .card{
-  z-index: 2;
-  position: fixed;
-  transform: translateX(50%);
-  left: 15px;
-  padding-right: 55px ;
-  width: 400px;
+  position: absolute;
+  width: 340px;
+  height: 590px;
+}
+.oblique {
+  background-size: cover;
+  background-position: center;
+  width: 60%;
+  height: 100%;
+}
+.col-xl-8{
+  height: 100vh;
 }
 
-@media (max-width: 600px){
-  .card{
-    position: fixed;
-    transform: translateX(5%);
-    width: 400px;
+@media (max-width: 768px) {
+  .card {
+    position: relative;
+    margin: auto;
+    padding: auto;
+    width: 310px;
+    height: 590px;
     top: 10%;
+  }
+  .page-header {
+    align-items: center;
+    justify-content: center;
+  }
+  .oblique-image {
+    display: none;
+  }
+  .col-xl-8{
+    height: 10vh;
   }
 }
