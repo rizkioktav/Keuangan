@@ -13,17 +13,17 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('company_role', function (Blueprint $table) {
+        Schema::create('tk_transaksi', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_company');
             $table->unsignedBigInteger('id_user');
-            $table->unsignedBigInteger('id_role');
+            $table->unsignedBigInteger('id_company');
+            $table->unsignedBigInteger('id_transaksi_detail');
             $table->timestamps();
-            
-            $table->foreign('id_company')->references('id')->on('master_company')->onDelete('cascade');
+
             $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('id_role')->references('id')->on('master_role')->onDelete('cascade');
-            
+            $table->foreign('id_company')->references('id')->on('master_company')->onDelete('cascade');
+            $table->foreign('id_transaksi_detail')->references('id')->on('tk_transaksi_detail')->onDelete('cascade');
+
         });
     }
 
@@ -34,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('company_role');
+        Schema::dropIfExists('tk_transaksi');
     }
 };

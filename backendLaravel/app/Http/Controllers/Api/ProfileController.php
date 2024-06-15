@@ -35,12 +35,12 @@ class ProfileController extends Controller
         // Validasi data input
         $validator = Validator::make($request->all(), [
             'username'  => 'required|string|max:15',
-            'name'      => 'required|string',
-            'no_hp'     => 'nullable|string|max:15',
-            'email'     => 'nullable|email|unique:users',
-            'address'   => 'nullable|string|max:255',
-            'birthdate' => 'nullable|date',
-            'gender'    => 'nullable|in:male,female',
+            'nama'      => 'required|string',
+            // 'no_hp'     => 'nullable|string|max:15',
+            // 'email'     => 'nullable|email|unique:users',
+            'alamat'   => 'nullable|string|max:255',
+            'tanggal_lahir' => 'nullable|date',
+            'gender'    => 'nullable|in:laki-laki,perempuan',
         ]);
 
         if ($validator->fails()) {
@@ -50,21 +50,14 @@ class ProfileController extends Controller
         // Update data profil pengguna
         $user->profile->update([
             'username'  => $request->username,
-            'name'      => $request->name,
-            'no_hp'     => $request->no_hp,
-            'email'     => $request->email,
-            'address'   => $request->address,
-            'birthdate' => $request->birthdate,
+            'nama'      => $request->nama,
+            // 'no_hp'     => $request->no_hp,
+            // 'email'     => $request->email,
+            'alamat'   => $request->alamat,
+            'tanggal_lahir' => $request->tanggal_lahir,
             'gender'    => $request->gender,
         ]);
         
-        if ($request->filled('email')) {
-            $user->update(['email' => $request->email]);
-        }
-        if ($request->filled('no_hp')) {
-            $user->update(['no_hp' => $request->no_hp]);
-        }
-
         return response()->json([
             'success' => true,
             'message' => 'Profile berhasil diperbarui',

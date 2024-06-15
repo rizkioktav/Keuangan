@@ -13,13 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('master_company', function (Blueprint $table) {
+        Schema::create('tk_transaksi_history', function (Blueprint $table) {
             $table->id();
-            $table->string('c_nama');
-            $table->text('c_alamat')->nullable();
-            $table->string('c_no_hp', 20)->nullable();
-            $table->string('c_email')->unique()->nullable();
+            $table->unsignedBigInteger('id_transaksi');
             $table->timestamps();
+
+            $table->foreign('id_transaksi')->references('id')->on('tk_transaksi')->onDelete('cascade');
+
         });
     }
 
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('master_company');
+        Schema::dropIfExists('tk_transaksi_history');
     }
 };

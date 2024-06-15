@@ -14,6 +14,6 @@ class MasterRole extends Model
     ];
     public function roleCompanies()
     {
-        return $this->hasMany(RoleCompany::class, 'role_id');
+        return $this->hasMany(RoleCompany::class, 'id_role');
     }
 }

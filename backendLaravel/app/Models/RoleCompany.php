@@ -10,23 +10,28 @@ class RoleCompany extends Model
     use HasFactory;
     protected $table = 'company_role';
     protected $fillable = [
-        'company_id',
-        'email',
-        'role_id'
+        'id_company',
+        'id_user',
+        'id_role'
     ];
 
     public function company()
     {
-        return $this->belongsTo(ProfileCompany::class, 'company_id');
+        return $this->belongsTo(ProfileCompany::class, 'id_company');
     }
     
     public function user()
     {
-        return $this->belongsTo(User::class, 'email', 'email');
+        return $this->belongsTo(User::class, 'id_user');
     }
 
     public function role()
     {
-        return $this->belongsTo(MasterRole::class, 'role_id');
+        return $this->belongsTo(MasterRole::class, 'id_role');
+    }
+    
+    public function userProfile()
+    {
+        return $this->hasOneThrough(ProfileUser::class, User::class, 'id', 'id_user', 'id_user', 'id');
     }
 }
