@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Profile, CompanyUser, Company } from '../../interfaces/profile';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-profile',
@@ -29,6 +30,8 @@ export class ProfileComponent implements OnInit {
   memberCurrentPage = 0;
   memberTotalPages = 0;
 
+  private apiUrl = environment.apiUrl;
+
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
@@ -36,7 +39,7 @@ export class ProfileComponent implements OnInit {
   }
 
   private fetchData(): void {
-    this.http.get<any>('http://127.0.0.1:8000/api/user/profile')
+    this.http.get<any>(`${this.apiUrl}/user/profile`)
     .subscribe((response: any) => {
       if (response.success) {
         this.profileUser = response.profile;
@@ -45,7 +48,7 @@ export class ProfileComponent implements OnInit {
         console.error('Failed to fetch data');
       }
     });
-    this.http.get<any>('http://127.0.0.1:8000/api/user/companies')
+    this.http.get<any>(`${this.apiUrl}/user/companies`)
     .subscribe((response: any) => {
       if (response.success) {
         this.companyUser = response.companies;
@@ -58,7 +61,7 @@ export class ProfileComponent implements OnInit {
 
   updateProfileUser() {
     if (this.profileUser) {
-      this.http.put('http://127.0.0.1:8000/api/user/profile/update', this.profileUser)
+      this.http.put(`${this.apiUrl}/user/profile/update`, this.profileUser)
       .subscribe((response: any) => {
         if (response.success) {
           this.profileUser = response.profile;
@@ -73,29 +76,9 @@ export class ProfileComponent implements OnInit {
     }
   }
 
-  // updateProfileCompany() {
-  //   if (this.profileCompany) {
-  //     this.http.put('http://127.0.0.1:8000/api/company/edit', this.profileCompany)
-  //       .subscribe((response: any) => {
-  //         if (response.success) {
-  //           this.profileCompany = response.company;
-  //           console.log('Profile company updated successfully:', response.company);
-  //           this.showCompanyProfileCard();
-  //         } else {
-  //           console.error('Failed to update profile company');
-  //         }
-  //       }, error => {
-  //         console.error('Error updating profile company:', error);
-  //       });
-  //   } else {
-  //     console.error('profileCompany is null or undefined');
-  //   }
-  // }
-  
-
   updateProfileCompany() {
     if (this.profileCompany) {
-      this.http.put('http://127.0.0.1:8000/api/company/edit', this.profileCompany)
+      this.http.put(`${this.apiUrl}/api/company/edit`, this.profileCompany)
       .subscribe((response: any) => {
         if (response.success) {
           this.profileCompany = response.company;

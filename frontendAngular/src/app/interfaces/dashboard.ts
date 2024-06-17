@@ -30,3 +30,15 @@ export interface InfoDashboard {
   total_users_today: number;
 }
 
+export interface RoleUser{
+id: number;
+role:[    
+  ['investor'],
+  ['business owner'],
+  ['komisaris'],
+  ['direktur'],
+  ['manager'],
+  ['supervisor'],
+  ['staff']]
+}
+
