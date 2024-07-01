@@ -35,6 +35,12 @@ import { LaporanComponent } from './components/laporan/laporan.component';
 import { BerandaComponent } from './components/beranda/beranda.component';
 import { AkunCoaComponent } from './components/data-master/akun-coa/akun-coa.component';
 import { AssetComponent } from './components/data-master/asset/asset.component';
+import { JurnalUmumComponent } from './components/laporan/jurnal-umum/jurnal-umum.component';
+import { NeracaComponent } from './components/laporan/neraca/neraca.component';
+import { PeriodeComponent } from './components/laporan/periode/periode.component';
+import { LabaRugiComponent } from './components/laporan/laba-rugi/laba-rugi.component';
+import { HutangPiutangComponent } from './components/laporan/hutang-piutang/hutang-piutang.component';
+import { LapTransaksiComponent } from './components/laporan/lap-transaksi/lap-transaksi.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +66,12 @@ import { AssetComponent } from './components/data-master/asset/asset.component';
     BerandaComponent,
     AkunCoaComponent,
     AssetComponent,
+    JurnalUmumComponent,
+    NeracaComponent,
+    PeriodeComponent,
+    LabaRugiComponent,
+    HutangPiutangComponent,
+    LapTransaksiComponent,
   ],
   imports: [
     BrowserModule,

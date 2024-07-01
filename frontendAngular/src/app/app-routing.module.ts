@@ -25,6 +25,14 @@ import { TransferUangComponent } from './components/transaksi/transfer-uang/tran
 import { AkunCoaComponent } from './components/data-master/akun-coa/akun-coa.component';
 import { AssetComponent } from './components/data-master/asset/asset.component';
 
+//child of laporanComponent
+import { LapTransaksiComponent } from './components/laporan/lap-transaksi/lap-transaksi.component';
+import { JurnalUmumComponent } from './components/laporan/jurnal-umum/jurnal-umum.component';
+import { NeracaComponent } from './components/laporan/neraca/neraca.component';
+import { PeriodeComponent } from './components/laporan/periode/periode.component';
+import { LabaRugiComponent } from './components/laporan/laba-rugi/laba-rugi.component';
+import { HutangPiutangComponent } from './components/laporan/hutang-piutang/hutang-piutang.component';
+
 const routes: Routes = [
   {
     path: '',
@@ -79,7 +87,7 @@ const routes: Routes = [
   { path: 'tanam-modal', component: TanamModalComponent, canActivate: [AfterLoginService], data: {title: 'Transaksi', subtitle: 'Transaksi / Tanam Modal' },  },
   { path: 'tarik-modal', component: TarikModalComponent, canActivate: [AfterLoginService], data: {title: 'Transaksi', subtitle: 'Transaksi / Tarik Modal' },  },
   { path: 'transfer-uang', component: TransferUangComponent, canActivate: [AfterLoginService], data: {title: 'Transaksi', subtitle: 'Transaksi / Transfer Uang' },  },
-  // end of transaksi component page //
+
   {
     path: 'data-master',
     component: DataMasterComponent,
@@ -89,12 +97,20 @@ const routes: Routes = [
   // data-master component page //
   { path: 'akun-coa', component: AkunCoaComponent, canActivate: [AfterLoginService], data: {title: 'Data Master', subtitle: ' Data Master / Akun COA' }, },
   { path: 'assets', component: AssetComponent, canActivate: [AfterLoginService], data: {title: 'Data Master', subtitle: ' Data Master / Assets' }, },
+
   {
     path: 'laporan',
     component: LaporanComponent,
     canActivate: [AfterLoginService],
     data: {title: 'Laporan', subtitle: 'Laporan'},
-  }
+  },
+  // laporan component page
+  { path: 'laporan/transaksi', component: LapTransaksiComponent, canActivate: [AfterLoginService], data: {title: 'Laporan', subtitle: 'Laporan / Transaksi'}, },
+  { path: 'laporan/jurnalumum', component: JurnalUmumComponent, canActivate: [AfterLoginService], data: {title: 'Laporan', subtitle: 'Laporan / Jurnal Umum'}, },
+  { path: 'laporan/neraca', component: NeracaComponent, canActivate: [AfterLoginService], data: {title: 'Laporan', subtitle: 'Laporan / Neraca'}, },
+  { path: 'laporan/periode', component: PeriodeComponent, canActivate: [AfterLoginService], data: {title: 'Laporan', subtitle: 'Laporan / Periode'}, },
+  { path: 'laporan/labarugi', component: LabaRugiComponent, canActivate: [AfterLoginService], data: {title: 'Laporan', subtitle: 'Laporan / Laba Rugi'}, },
+  { path: 'laporan/hutangpiutang', component: HutangPiutangComponent, canActivate: [AfterLoginService], data: {title: 'Laporan', subtitle: 'Laporan / Hutang Piutang'}, },
 ];
 
 @NgModule({
