@@ -331,7 +331,6 @@ class CompanyController extends Controller
     {
         $user = Auth::user();
     
-        // Validasi input
         $request->validate([
             'c_nama'    => 'required|string|max:255',
             'c_alamat'  => 'nullable|string',
@@ -376,5 +375,37 @@ class CompanyController extends Controller
             'company' => $company
         ]);
     }
-    
+    public function getCompanyMembers($id_company)
+{
+    $user = Auth::user();
+
+    $company = ProfileCompany::find($id_company);
+
+    if (!$company) {
+        return response()->json([
+            'success' => false,
+            'message' => 'Company not found',
+        ], 404);
+    }
+
+    $members = RoleCompany::where('id_company', $id_company)
+                          ->with(['company', 'user', 'role'])
+                          ->get()
+                          ->map(function ($roleCompany) {
+                              return [
+                                'id' => $roleCompany->user->id,
+                                'nama' => $roleCompany->user->profile->nama,
+                                'email' => $roleCompany->user->email,
+                                'no_hp' => $roleCompany->user->profile->no_hp,
+                                'role' => $roleCompany->role->role,
+                              ];
+                          });
+
+    return response()->json([
+        'success' => true,
+        'company' => $company,
+        'members' => $members,
+    ], 200);
+}
+
 }

@@ -61,9 +61,9 @@
       </div>      
       <ul class="navbar-nav justify-content-end">
         <li class="nav-item d-flex align-items-center ms-3 order-lg-4 order-4">
-          <a class="nav-link text-body font-weight-bold px-0">
+          <a class="nav-link text-body font-weight-bold px-0" *ngIf="profileUser">
             <i class="fa fa-user me-sm-1"></i>
-            <span class="d-sm-inline d-none">rizkioktav70123123123</span>
+            <span class="d-sm-inline d-none">{{ profileUser.nama ? profileUser.nama : profileUser.email }}</span>
           </a>
         </li>
         <li class="nav-item d-flex align-items-center ms-3 order-lg-5 order-5">

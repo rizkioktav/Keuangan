@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Profile, CompanyUser, Company } from '../../interfaces/profile';
+import { Profile, CompanyUser, Company, Member } from '../../interfaces/profile';
 import { environment } from '../../../environments/environment';
 
 @Component({
@@ -15,16 +15,16 @@ export class ProfileComponent implements OnInit {
   showEditProfileUser = false;
   showProfileUser = true;
   showEditCompanyProfile = false;
-  hoveredCompany: any = null;
+  hoveredCompany: CompanyUser | null = null;
   showOverlay = false;
 
-  companyUser: CompanyUser [] = [];
+  companyUser: CompanyUser[] = [];
   profileCompany: Company | null = null;
   profileUser: Profile | null = null;
-
+  companyMember: Member[] = [];
 
   // Pagination for members in the overlay
-  paginatedMembers: { name: string; position: string; }[] = [];
+  paginatedMembers: Member[] = [];
   pageSizeOptions = [5, 10, 20];
   memberPageSize = 5;
   memberCurrentPage = 0;
@@ -40,23 +40,24 @@ export class ProfileComponent implements OnInit {
 
   private fetchData(): void {
     this.http.get<any>(`${this.apiUrl}/user/profile`)
-    .subscribe((response: any) => {
-      if (response.success) {
-        this.profileUser = response.profile;
-        console.log(this.profileUser);
-      } else {
-        console.error('Failed to fetch data');
-      }
-    });
+      .subscribe((response: any) => {
+        if (response.success) {
+          this.profileUser = response.profile;
+          console.log(this.profileUser);
+        } else {
+          console.error('Failed to fetch data');
+        }
+      });
+
     this.http.get<any>(`${this.apiUrl}/user/companies`)
-    .subscribe((response: any) => {
-      if (response.success) {
-        this.companyUser = response.companies;
-        console.log(this.companyUser);
-      } else {
-        console.error('Failed to fetch data');
-      }
-    });
+      .subscribe((response: any) => {
+        if (response.success) {
+          this.companyUser = response.companies;
+          console.log(this.companyUser);
+        } else {
+          console.error('Failed to fetch data');
+        }
+      });
   }
 
   updateProfileUser() {
@@ -98,11 +99,24 @@ export class ProfileComponent implements OnInit {
       console.error('profileCompany is null');
     }
   }
-  
-  showMembers(company: any) {
-    this.hoveredCompany = company;
+
+  showMembers(company: CompanyUser) {
+     this.hoveredCompany = company;
     this.showOverlay = true;
-    this.updateMemberPagination();
+    console.log('Selected Company:', company);
+
+    this.http.get<any>(`${this.apiUrl}/company/${company.company.id}/members`)
+      .subscribe((response: any) => {
+        if (response.success) {
+          this.companyMember = response.members;
+          console.log('Company Members:', this.companyMember);
+          this.updateMemberPagination();
+        } else {
+          console.error('Failed to fetch members data');
+        }
+      }, error => {
+        console.error('Error fetching members data:', error);
+      });
   }
 
   hideMembers() {
@@ -117,18 +131,16 @@ export class ProfileComponent implements OnInit {
   }
 
   updateMemberPagination() {
-    if (this.hoveredCompany) {
-      this.memberTotalPages = Math.ceil(this.hoveredCompany.members.length / this.memberPageSize);
+    if (this.companyMember.length) {
+      this.memberTotalPages = Math.ceil(this.companyMember.length / this.memberPageSize);
       this.paginateMembers();
     }
   }
 
   paginateMembers() {
-    if (this.hoveredCompany) {
-      const start = this.memberCurrentPage * this.memberPageSize;
-      const end = start + this.memberPageSize;
-      this.paginatedMembers = this.hoveredCompany.members.slice(start, end);
-    }
+    const start = this.memberCurrentPage * this.memberPageSize;
+    const end = start + this.memberPageSize;
+    this.paginatedMembers = this.companyMember.slice(start, end);
   }
 
   nextMemberPage() {
@@ -181,7 +193,7 @@ export class ProfileComponent implements OnInit {
     this.showCompanyList = false;
     this.showCompanyProfile = false;
   }
-
+ 
   showEditProfileUserCard() {
     this.showEditProfileUser = true;
     this.showProfileUser = false;

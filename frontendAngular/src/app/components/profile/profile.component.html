@@ -250,7 +250,7 @@
             <div [ngClass]="{'member-hover-card': showOverlay, 'member-hover-card-hide': !showOverlay}" (click)="$event.stopPropagation()">
               <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
-                  <span>Members of {{ hoveredCompany.name }}</span>
+                  <span>Member dari {{ hoveredCompany.company.c_nama }}</span>
                   <button type="button" class="btn-close" aria-label="Close" (click)="hideMembers()"></button>
                 </div>
                 <div class="card-body">
@@ -267,22 +267,28 @@
                       </thead>
                       <tbody>
                         <tr *ngFor="let member of paginatedMembers">
-                          <td>{{ member.name }}</td>
-                          <td>{{ member.position }}</td>
+                          <td>{{ member.nama }}</td>
+                          <td>{{ member.email }}</td>
+                          <td>{{ member.no_hp }}</td>
+                          <td>{{ member.role }}</td>
                         </tr>
                       </tbody>
                     </table>
                     <div class="d-flex justify-content-between align-items-center mt-3">
-                      <div>
-                        <label for="pageSize">Items per page:</label>
-                        <select id="pageSize" [(ngModel)]="memberPageSize" (change)="updateMemberPagination()">
-                          <option *ngFor="let size of pageSizeOptions" [value]="size">{{ size }}</option>
+                      <div class="d-flex align-items-center">
+                        <span class="pe-2" for="pageSize">Items per page: </span>
+                        <select class="form-select form-select-sm" style="width: 60px;" id="pageSize" [(ngModel)]="memberPageSize" (change)="updateMemberPagination()">
+                          <option *ngFor="let size of pageSizeOptions" [value]="size"> {{ size }}</option>
                         </select>
                       </div>
                       <div>
-                        <button (click)="prevMemberPage()" [disabled]="memberCurrentPage === 0">Previous</button>
+                        <a class="me-3" (click)="prevMemberPage()" [class.disabled]="memberCurrentPage === 0">
+                          <i class="bi bi-arrow-left-short fs-4 text-secondary"></i>
+                        </a>
                         <span>Page {{ memberCurrentPage + 1 }} of {{ memberTotalPages }}</span>
-                        <button (click)="nextMemberPage()" [disabled]="memberCurrentPage >= memberTotalPages - 1">Next</button>
+                        <a class="ms-3" (click)="nextMemberPage()" [class.disabled]="memberCurrentPage >= memberTotalPages - 1">
+                          <i class="bi bi-arrow-right-short fs-4 text-secondary"></i>
+                        </a>
                       </div>
                     </div>
                   </div>
@@ -291,6 +297,7 @@
             </div>
           </div>
         </div>
+        
                
       </div>
       <!-- Company Profile -->
@@ -372,7 +379,7 @@
                 <li class="list-group-item border-0 ps-0 text-sm">
                   <div class="d-flex justify-content-end">
                     <button type="submit" class="btn btn-primary me-2">Simpan</button>
-                    <button type="button" class="btn btn-secondary" (click)="showEditCompanyProfileCard()">Batal</button>
+                    <button type="button" class="btn btn-secondary" (click)="showCompanyProfileCardBefore()">Batal</button>
                   </div>
                 </li>
               </ul>

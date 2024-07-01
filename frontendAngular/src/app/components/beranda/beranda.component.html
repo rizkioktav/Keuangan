@@ -1,0 +1,217 @@
+<div class="container-fluid py-4">
+  <div class="row" *ngIf="dashboardStat">
+    <div class="col-xl-4 col-sm-6 mb-xl-0 mb-4">
+      <div class="card">
+        <div class="card-body p-3">
+          <div class="row">
+            <div class="col-8">
+              <div class="numbers">
+                <p class="text-sm mb-0 text-capitalize font-weight-bold">Total Company Terdaftar</p>
+                <h5 class="font-weight-bolder mb-0">
+                  {{ dashboardStat.total_companies }}
+                  <span class="text-success text-sm font-weight-bolder">company</span>
+                </h5>
+              </div>
+            </div>
+            <div class="col-4 text-end">
+              <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+                <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-4 col-sm-6 mb-xl-0 mb-4">
+      <div class="card">
+        <div class="card-body p-3">
+          <div class="row">
+            <div class="col-8">
+              <div class="numbers">
+                <p class="text-sm mb-0 text-capitalize font-weight-bold">Total User</p>
+                <h5 class="font-weight-bolder mb-0">
+                  {{ dashboardStat.total_users }}
+                  <span class="text-success text-sm font-weight-bolder">user</span>
+                </h5>
+              </div>
+            </div>
+            <div class="col-4 text-end">
+              <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+                <i class="ni ni-world text-lg opacity-10" aria-hidden="true"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-4 col-sm-6 mb-xl-0 mb-4">
+      <div class="card">
+        <div class="card-body p-3">
+          <div class="row">
+            <div class="col-8">
+              <div class="numbers">
+                <p class="text-sm mb-0 text-capitalize font-weight-bold">User Baru Hari Ini</p>
+                <h5 class="font-weight-bolder mb-0">
+                  {{ dashboardStat.total_users_today }}
+                  <span class="text-success text-sm font-weight-bolder">user</span>
+                </h5>
+              </div>
+            </div>
+            <div class="col-4 text-end">
+              <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+                <i class="ni ni-paper-diploma text-lg opacity-10" aria-hidden="true"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="col-xl-3 col-sm-6">
+      <div class="card">
+        <div class="card-body p-3">
+          <div class="row">
+            <div class="col-8">
+              <div class="numbers">
+                <p class="text-sm mb-0 text-capitalize font-weight-bold">Sales</p>
+                <h5 class="font-weight-bolder mb-0">
+                  $103,430
+                  <span class="text-success text-sm font-weight-bolder">+5%</span>
+                </h5>
+              </div>
+            </div>
+            <div class="col-4 text-end">
+              <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+                <i class="ni ni-cart text-lg opacity-10" aria-hidden="true"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+  </div>
+  <div class="col-lg-12 my-4">
+    <div class="card">
+      <div class="card-header pb-0">
+        <div class="row">
+          <div class="col-lg-6 col-7 d-flex align-items-center">
+            <h4 class="mb-0">Company Aktif</h4>
+          </div>
+          <div class="col-lg-6 col-5 d-flex justify-content-end">
+            <div class="input-group">
+              <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
+              <input type="text" class="form-control" placeholder="Cari Company" [(ngModel)]="searchText">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-body px-0">
+        <div class="table-responsive">
+          <table class="table align-items-center mb-0">
+            <thead>
+              <tr>
+                <th class="text-uppercase text-secondary text-xs font-weight-bolder">Companies</th>
+                <th class="text-uppercase text-secondary text-xs font-weight-bolder ps-2">Owner</th>
+                <th class="text-center text-uppercase text-secondary text-xs font-weight-bolder">Member</th>
+                <th class="text-center text-uppercase text-secondary text-xs font-weight-bolder">Ingin Bergabung?</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let company of companiesWithOwners | filter:searchText">
+                <td>
+                  <div class="d-flex px-2 ms-2">
+                    <div class="d-flex flex-column justify-content-center">
+                      <h6 class="mb-0 text-sm">{{ company.c_nama }}</h6>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="d-flex flex-column justify-content-center">
+                    <span class="text-xs font-weight-bold">{{ company.owner.profile.nama ? company.owner.profile.nama : '-' }}</span>
+                    <span class="text-xs font-weight-bold"> ({{ company.owner.email }})</span>
+                  </div>
+                </td>
+                <td class="align-middle text-center text-sm">
+                  <div class="d-flex flex-column justify-content-center" *ngIf="dashboardStat">
+                    <span class="text-xs font-weight-bold">{{ company.total_members }}</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="d-flex justify-content-center">
+                    <button type="button" class="btn bg-gradient-primary mt-1" (click)="openHoverJoin(company)">Gabung</button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <div *ngIf="hoveredCardJoin">
+    <div [ngClass]="{'overlay': showOverlay, 'overlay-hide': !showOverlay}" (click)="hideHoverJoin()" (animationend)="onAnimationEnd($event)">
+      <div [ngClass]="{'member-hover-card': showOverlay, 'member-hover-card-hide': !showOverlay}" (click)="$event.stopPropagation()">
+        <div class="card">
+          <div class="card-header d-flex justify-content-between align-items-center">
+            <span>{{ hoveredCompany?.c_nama }}</span>
+            <button type="button" class="btn-close" aria-label="Close" (click)="hideHoverJoin()"></button>
+          </div>
+          <div class="card-body">
+            <form (ngSubmit)="submitForm()">
+              <div class="mb-3">
+                <label for="role" class="form-label">Pilih Role:</label>
+                <select id="role" name="role" class="form-select" [(ngModel)]="selectedRole" required>
+                  <option selected disabled>Pilih role yang anda inginkan</option>
+                  <option value="1">Investor</option>
+                  <option value="3">Komisaris</option>
+                  <option value="4">Direktur</option>
+                  <option value="5">Manager</option>
+                  <option value="6">Supervisor</option>
+                  <option value="7">Staff</option>
+                </select>
+              </div>
+              <div class="d-flex justify-content-end">
+                <button type="submit" class="btn btn-primary">Gabung</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <!-- <footer class="footer pt-3  ">
+    <div class="container-fluid">
+      <div class="row align-items-center justify-content-lg-between">
+        <div class="col-lg-6 mb-lg-0 mb-4">
+          <div class="copyright text-center text-sm text-muted text-lg-start">
+            © <script>
+              document.write(new Date().getFullYear())
+            </script>,
+            made with <i class="fa fa-heart"></i> by
+            <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">Creative Tim</a>
+            for a better web.
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <ul class="nav nav-footer justify-content-center justify-content-lg-end">
+            <li class="nav-item">
+              <a href="https://www.creative-tim.com" class="nav-link text-muted" target="_blank">Creative Tim</a>
+            </li>
+            <li class="nav-item">
+              <a href="https://www.creative-tim.com/presentation" class="nav-link text-muted" target="_blank">About Us</a>
+            </li>
+            <li class="nav-item">
+              <a href="https://www.creative-tim.com/blog" class="nav-link text-muted" target="_blank">Blog</a>
+            </li>
+            <li class="nav-item">
+              <a href="https://www.creative-tim.com/license" class="nav-link pe-0 text-muted" target="_blank">License</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer> -->
+</div>

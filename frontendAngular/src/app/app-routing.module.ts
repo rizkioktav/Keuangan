@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { SignupComponent } from './components/signup/signup.component';
 import { LoginComponent } from './components/login/login.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { BerandaComponent } from './components/beranda/beranda.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AfterLoginService } from './services/after-login.service';
 import { BeforeLoginService } from './services/before-login.service';
@@ -19,6 +20,10 @@ import { PiutangComponent } from './components/transaksi/piutang/piutang.compone
 import { TanamModalComponent } from './components/transaksi/tanam-modal/tanam-modal.component';
 import { TarikModalComponent } from './components/transaksi/tarik-modal/tarik-modal.component';
 import { TransferUangComponent } from './components/transaksi/transfer-uang/transfer-uang.component';
+
+//child of datamasterComponent
+import { AkunCoaComponent } from './components/data-master/akun-coa/akun-coa.component';
+import { AssetComponent } from './components/data-master/asset/asset.component';
 
 const routes: Routes = [
   {
@@ -41,6 +46,12 @@ const routes: Routes = [
     component: ProfileComponent,
     canActivate: [AfterLoginService],
     data: { title: 'Profile', subtitle: 'Profile'},
+  },
+  {
+    path: 'beranda',
+    component: BerandaComponent,
+    canActivate: [AfterLoginService],
+    data: { title: 'Beranda', subtitle: 'Beranda'},
   },
   {
     path: 'dashboard',
@@ -75,6 +86,9 @@ const routes: Routes = [
     canActivate: [AfterLoginService],
     data: {title: 'Master Data', subtitle: 'Master Data'}
   },
+  // data-master component page //
+  { path: 'akun-coa', component: AkunCoaComponent, canActivate: [AfterLoginService], data: {title: 'Data Master', subtitle: ' Data Master / Akun COA' }, },
+  { path: 'assets', component: AssetComponent, canActivate: [AfterLoginService], data: {title: 'Data Master', subtitle: ' Data Master / Assets' }, },
   {
     path: 'laporan',
     component: LaporanComponent,

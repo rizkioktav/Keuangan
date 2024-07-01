@@ -13,6 +13,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './services/token-interceptor.service';
 import { RouterLinkActive } from '@angular/router';
 import { NavbarService } from './services/navbar.service';
+import { FilterPipe } from './filter.pipe';
 
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
@@ -31,6 +32,9 @@ import { KasdanbankComponent } from './components/kasdanbank/kasdanbank.componen
 import { TransaksiComponent } from './components/transaksi/transaksi.component';
 import { DataMasterComponent } from './components/data-master/data-master.component';
 import { LaporanComponent } from './components/laporan/laporan.component';
+import { BerandaComponent } from './components/beranda/beranda.component';
+import { AkunCoaComponent } from './components/data-master/akun-coa/akun-coa.component';
+import { AssetComponent } from './components/data-master/asset/asset.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +55,11 @@ import { LaporanComponent } from './components/laporan/laporan.component';
     TransferUangComponent,
     PiutangComponent,
     DataMasterComponent,
-    LaporanComponent
+    LaporanComponent,
+    FilterPipe,
+    BerandaComponent,
+    AkunCoaComponent,
+    AssetComponent,
   ],
   imports: [
     BrowserModule,

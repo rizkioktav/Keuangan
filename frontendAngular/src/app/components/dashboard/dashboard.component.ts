@@ -14,6 +14,7 @@ export class DashboardComponent implements OnInit {
   hoveredCardJoin: boolean = false;
   showOverlay: boolean = false;
   selectedRole: string = '';
+  searchText: string = '';
 
   constructor(private backendService: BackendService) {}
 

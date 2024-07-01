@@ -22,6 +22,7 @@ export interface Company{
   c_no_hp: string;
   c_email: string;
   role: Role;
+  members: Member;
 }
 export interface Role{
   id: number;
@@ -31,4 +32,12 @@ export interface User{
   id: number;
   no_hp: number;
   email: string;
+}
+
+export interface Member{
+  id: Number;
+  nama: string;
+  email: string;
+  no_hp: number;
+  role: string;
 }

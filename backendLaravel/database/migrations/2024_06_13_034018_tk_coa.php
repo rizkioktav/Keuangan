@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('tk_coa', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('id_company');
             $table->unsignedBigInteger('id_coa_kategori');
             $table->integer('coa_kode');
             $table->string('coa_nama');
@@ -25,6 +26,7 @@ return new class extends Migration
             $table->timestamps();
 
             $table->foreign('id_coa_kategori')->references('id')->on('tk_coa_kategori')->onDelete('cascade');
+            $table->foreign('id_company')->references('id')->on('master_company')->onDelete('cascade');
         });
     }
 

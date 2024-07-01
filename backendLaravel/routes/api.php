@@ -18,6 +18,8 @@ Route::middleware('auth:api')->group(function () {
     Route::post('/company/join', [CompanyController::class, 'joinCompany']);
     Route::post('/company/transfer-ownership', [CompanyController::class, 'transferOwnership']);
     Route::put('/company/edit', [CompanyController::class, 'updateCompany']);
+    Route::get('/company/{id_company}/members', [CompanyController::class, 'getCompanyMembers']);
+
 
     //user profile routes
     Route::get('/user/profile', [ProfileController::class, 'getProfile']);
