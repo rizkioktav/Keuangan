@@ -1,1 +1,72 @@
-<p>neraca works!</p>
+<div class="container-fluid py-4">
+  <div class="card">
+    <div class="card-header pb-0">
+      <div class="col-lg-6 col-5 mt-1">
+        <h4 class="mb-0">Laporan Neraca</h4>
+      </div>
+      <div class="row">
+        <div class="col-lg-6 col-7 mt-1">
+          <div class="d-flex align-items-center">
+            <div class="me-2">
+              <input type="month" class="form-control form-control-sm" [(ngModel)]="month" placeholder="Pilih Bulan">
+            </div>
+            <div class="pt-3 ms-1 me-2">
+              <button type="button" class="btn btn-primary btn-sm" (click)="cariLaporan()">CARI</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body px-0">
+      <div class="table-responsive">
+        <table class="table align-items-center mb-0">
+          <thead>
+            <tr>
+              <th class="text-uppercase text-secondary text-xs font-weight-bolder">Kode</th>
+              <th class="text-uppercase text-secondary text-xs font-weight-bolder">Akun</th>
+              <th class="text-uppercase text-secondary text-xs font-weight-bolder">Saldo Debit</th>
+              <th class="text-uppercase text-secondary text-xs font-weight-bolder">Saldo Kredit</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let laporan of laporanSampleData">
+              <td>
+                <div class="d-flex px-2 ms-2">
+                  <div class="d-flex flex-column justify-content-center">
+                    <span class="text-xs font-weight-bold">{{ laporan.kodeAkun }}</span>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="d-flex px-2 ms-2">
+                  <div class="d-flex flex-column justify-content-center">
+                    <span class="text-xs font-weight-bold">{{ laporan.namaAkun }}</span>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="d-flex px-2 ms-2">
+                  <div class="d-flex flex-column justify-content-center">
+                    <span class="text-xs font-weight-bold">Rp. {{ laporan.saldoDebit | number }}</span>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="d-flex px-2 ms-2">
+                  <div class="d-flex flex-column justify-content-center">
+                    <span class="text-xs font-weight-bold">Rp. {{ laporan.saldoKredit | number }}</span>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="text-xs font-weight-bolder ps-4">Total</td>
+              <td class="text-xs font-weight-bolder ps-4">Rp. {{ totalDebit | number }}</td>
+              <td class="text-xs font-weight-bolder ps-4">Rp. {{ totalKredit | number }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

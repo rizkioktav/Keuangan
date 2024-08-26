@@ -1,1 +1,161 @@
-<p>asset works!</p>
+<div class="container-fluid py-4">
+  <div class="card">
+    <div class="card-header pb-0">
+      <div class="row">
+        <div class="col-lg-6 col-7 d-flex align-items-center">
+          <h4 class="mb-0">Asset</h4>
+        </div>
+      </div>
+    </div>
+    <div class="card-header pt-3">
+      <div class="row">
+        <div class="col-lg-6 col-7 d-flex align-items-start">
+          <button type="button" class="btn bg-gradient-dark mb-0" data-bs-toggle="modal" data-bs-target="#tambahAssetModal">
+            <span style="font-size: 11px;">Tambah Asset</span>
+          </button>
+        </div>
+        <div class="col-lg-6 col-5 d-flex justify-content-end">
+          <div class="input-group">
+            <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
+            <input type="text" class="form-control" placeholder="Cari Asset">
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="tambahAssetModal" tabindex="-1" aria-labelledby="assetModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="assetModalLabel">Tambah Data Asset</h5>
+            <a href="javascript:;">
+              <i class="bi bi-x-lg" data-bs-dismiss="modal" aria-label="Close"></i>
+            </a>
+          </div>
+          <div class="modal-body">
+            <form #form="ngForm" (ngSubmit)="onSubmit(form)" novalidate>
+              <div class="mb-3">
+                <label for="namaAsset">Nama</label>
+                <input type="text" class="form-control" id="namaAsset" placeholder="Nama Asset" name="namaAsset" [(ngModel)]="namaAsset" required>
+              </div>
+              <div class="mb-3">
+                <label for="akunAsset">Akun Asset Tetap</label>
+                <select class="form-select" id="akunAsset" name="akunAsset" [(ngModel)]="akunAsset" required>
+                  <option value="" disabled selected>Pilih Akun</option>
+                  <option *ngFor="let akun of akunList" [value]="akun.id">{{ akun.nama }}</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="deskripsi">Deskripsi</label>
+                <textarea class="form-control" id="deskripsi" name="deskripsi" rows="3" [(ngModel)]="deskripsi" required></textarea>
+              </div>
+              <div class="mb-3">
+                <label for="tanggalAkuisisi">Tanggal Akuisisi</label>
+                <input type="date" class="form-control" id="tanggalAkuisisi" name="tanggalAkuisisi" [(ngModel)]="tanggalAkuisisi" required>
+              </div>
+              <div class="mb-3">
+                <label for="biayaAkuisisi">Biaya Akuisisi</label>
+                <input type="number" class="form-control" id="biayaAkuisisi" name="biayaAkuisisi" [(ngModel)]="biayaAkuisisi" required>
+              </div>
+              <div class="mb-3">
+                <label for="akunDikreditkan">Akun Dikreditkan</label>
+                <select class="form-select" id="akunDikreditkan" name="akunDikreditkan" [(ngModel)]="akunDikreditkan" required>
+                  <option value="" disabled selected>Pilih Akun</option>
+                  <option *ngFor="let akun of akunList" [value]="akun.id">{{ akun.nama }}</option>
+                </select>
+              </div>
+              <div class="d-flex justify-content-end">
+                <button type="submit" class="btn btn-primary">Simpan</button>
+              </div>
+            </form>            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body px-0">
+      <div class="table-responsive">
+        <table class="table align-items-center mb-0">
+          <thead>
+            <tr>
+              <th class="text-uppercase text-secondary text-xs font-weight-bolder">No</th>
+              <th class="text-uppercase text-secondary text-xs font-weight-bolder">Nama</th>
+              <th class="text-uppercase text-secondary text-xs font-weight-bolder">Akun Asset Tetap</th>
+              <th class="text-uppercase text-secondary text-xs font-weight-bolder">Deskripsi</th>
+              <th class="text-uppercase text-secondary text-xs font-weight-bolder">Tanggal Akuisisi</th>
+              <th class="text-uppercase text-secondary text-xs font-weight-bolder">Biaya Akuisisi</th>
+              <th class="text-uppercase text-secondary text-xs font-weight-bolder">Akun Dikreditkan</th>
+              <th class="text-uppercase text-secondary text-xs font-weight-bolder">Aksi</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let asset of assetData; let i = index">
+              <td>
+                <div class="d-flex px-2 ms-2">
+                  <div class="d-flex flex-column justify-content-center">
+                    <span class="text-xs font-weight-bold">{{ i + 1 }}</span>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="d-flex px-2 ms-2">
+                  <div class="d-flex flex-column justify-content-center">
+                    <span class="text-xs font-weight-bold">{{ asset.nama }}</span>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="d-flex px-2 ms-2">
+                  <div class="d-flex flex-column justify-content-center">
+                    <span class="text-xs font-weight-bold">{{ asset.akunAsset }}</span>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="d-flex px-2 ms-2">
+                  <div class="d-flex flex-column justify-content-center">
+                    <span class="text-xs font-weight-bold">{{ asset.deskripsi }}</span>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="d-flex px-2 ms-2">
+                  <div class="d-flex flex-column justify-content-center">
+                    <span class="text-xs font-weight-bold">{{ asset.tanggalAkuisisi | date }}</span>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="d-flex px-2 ms-2">
+                  <div class="d-flex flex-column justify-content-center">
+                    <span class="text-xs font-weight-bold">Rp. {{ asset.biayaAkuisisi | number }}</span>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="d-flex px-2 ms-2">
+                  <div class="d-flex flex-column justify-content-center">
+                    <span class="text-xs font-weight-bold">{{ asset.akunDikreditkan }}</span>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="d-flex">
+                  <div class="col-md-4 text-md-end text-center mt-3 mt-md-0">
+                    <a href="javascript:;">
+                      <i class="bi bi-pencil-square text-secondary text-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Akun"></i>
+                    </a>
+                  </div>
+                  <div class="col-md-4 text-md-end text-center mt-3 mt-md-0">
+                    <a href="javascript:;">
+                      <i class="bi bi-trash text-secondary text-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Hapus Akun"></i>
+                    </a>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

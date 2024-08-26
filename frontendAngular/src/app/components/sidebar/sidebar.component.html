@@ -89,8 +89,10 @@
           <span class="nav-link-text ms-1">Kas dan Bank</span>
         </a>
       </li>
-      <li class="nav-item" (mouseenter)="showSubmenu = true" (mouseleave)="showSubmenu = false">
-        <a class="nav-link" routerLink="transaksi" *ngIf="loggedIn" [class.active]="isTransaksiActive">
+      <!-- <li class="nav-item" (mouseenter)="showSubmenu = true" (mouseleave)="showSubmenu = false"> -->
+      <li class="nav-item">
+        <a class="nav-link" routerLink="transaksi" *ngIf="loggedIn" routerLinkActive="active">
+        <!--<a class="nav-link" routerLink="transaksi" *ngIf="loggedIn" [class.active]="isTransaksiActive"> -->
           <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
             <svg width="12px" height="12px" viewBox="0 0 46 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
               <title>customer-support</title>
@@ -109,16 +111,16 @@
           </div>
           <span class="nav-link-text ms-1">Transaksi</span>
         </a>
-        <div class="card-hover-menu bg-white" *ngIf="showSubmenu">
+        <!-- <div class="card-hover-menu bg-white" *ngIf="showSubmenu"> -->
           <!-- Submenu Content -->
-          <a class="dropdown-item" routerLink="pemasukan" *ngIf="loggedIn" routerLinkActive="active">Pemasukan</a>
+          <!-- <a class="dropdown-item" routerLink="pemasukan" *ngIf="loggedIn" routerLinkActive="active">Pemasukan</a>
           <a class="dropdown-item" routerLink="pengeluaran" *ngIf="loggedIn" routerLinkActive="active">Pengeluaran</a>
           <a class="dropdown-item" routerLink="hutang" *ngIf="loggedIn" routerLinkActive="active">Hutang</a>
           <a class="dropdown-item" routerLink="piutang" *ngIf="loggedIn" routerLinkActive="active">Piutang</a>
           <a class="dropdown-item" routerLink="tanam-modal" *ngIf="loggedIn" routerLinkActive="active">Tanam Modal</a>
           <a class="dropdown-item" routerLink="tarik-modal" *ngIf="loggedIn" routerLinkActive="active">Tarik Modal</a>
           <a class="dropdown-item" routerLink="transfer-uang" *ngIf="loggedIn" routerLinkActive="active">Transfer Uang</a>
-        </div>
+        </div> -->
       </li>  
       <li class="nav-item">
         <a class="nav-link" routerLink="data-master" *ngIf="loggedIn" routerLinkActive="active">

@@ -1,42 +1,58 @@
 import { Injectable } from '@angular/core';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TokenService {
 
+  private apiUrl = environment.apiUrl;
+
   constructor() { }
-  handle(token:any){
-    this.set(token);
+
+  handle(token: any, rememberMe: boolean) {
+    this.set(token, rememberMe);
     console.log(this.isValid());
   }
-  set(token:any){
-    return localStorage.setItem('token',token);
+
+  set(token: any, rememberMe: boolean) {
+    if (rememberMe) {
+      localStorage.setItem('token', token);
+    } else {
+      sessionStorage.setItem('token', token);
+    }
   }
-  get(){
-    return localStorage.getItem('token');
+
+  get() {
+    return localStorage.getItem('token') || sessionStorage.getItem('token');
   }
-  remove(){
-    return localStorage.removeItem('token');
+
+  remove() {
+    localStorage.removeItem('token');
+    sessionStorage.removeItem('token');
   }
-  isValid(){
+
+  isValid() {
     const token = this.get();
-    if(token){
+    if (token) {
       const payload = this.payload(token);
-      if(payload){
-        return (payload.iss==='http://127.0.0.1:8000/api/login')?true:false;
+      if (payload) {
+        return (payload.iss === `${this.apiUrl}/login`);
       }
     }
     return false;
   }
-  payload(token:any){
+
+  payload(token: any) {
     const payload = token.split('.')[1];
     return this.decode(payload);
   }
-  decode(payload:any){
+
+  decode(payload: any) {
     return JSON.parse(atob(payload));
   }
-  loggedIn(){
+
+  loggedIn() {
     return this.isValid();
   }
 }

@@ -10,7 +10,7 @@ import { Company, InfoDashboard } from '../../interfaces/dashboard';
 export class BerandaComponent implements OnInit {
   companiesWithOwners: Company[] = [];
   dashboardStat: InfoDashboard | null = null;
-  hoveredCompany: Company | null = null;
+  getCompany: Company | null = null;
   hoveredCardJoin: boolean = false;
   showOverlay: boolean = false;
   selectedRole: string = '';
@@ -40,10 +40,8 @@ export class BerandaComponent implements OnInit {
     });
   }
 
-  openHoverJoin(company: Company): void {
-    this.hoveredCompany = company;
-    this.hoveredCardJoin = true;
-    this.showOverlay = true;
+  joinCompany(company: Company): void {
+    this.getCompany = company;
   }
 
   hideHoverJoin(): void {
@@ -51,16 +49,10 @@ export class BerandaComponent implements OnInit {
     this.showOverlay = false;
   }
 
-  onAnimationEnd(event: AnimationEvent): void {
-    if (event.animationName === 'fadeOut') {
-      this.hoveredCompany = null;
-    }
-  }
-
   submitForm(): void {
-    if (this.hoveredCompany && this.selectedRole) {
+    if (this.getCompany && this.selectedRole) {
       const requestData = {
-        id_company: this.hoveredCompany.id,
+        id_company: this.getCompany.id,
         id_role: this.selectedRole
       };
 
@@ -77,5 +69,5 @@ export class BerandaComponent implements OnInit {
     } else {
       console.error('Company or role is not selected');
     }
-  }
+  } 
 }

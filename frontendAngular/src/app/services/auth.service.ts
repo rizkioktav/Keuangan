@@ -15,24 +15,20 @@ export class AuthService {
     this.loggedIn.next(value);
   }
 
-  // Method untuk menyimpan token otentikasi
-  setAuthToken(token: string) {
-    this.token.set(token);
+  setAuthToken(token: string, rememberMe: boolean) {
+    this.token.handle(token, rememberMe);
     this.changeAuthStatus(true);
   }
 
-  // Method untuk mendapatkan token otentikasi
   getAuthToken(): string | null {
     return this.token.get();
   }
 
-  // Method untuk menghapus token otentikasi
   removeAuthToken() {
     this.token.remove();
     this.changeAuthStatus(false);
   }
 
-  // Method untuk memeriksa status otentikasi
   isLoggedIn(): boolean {
     return this.token.loggedIn();
   }

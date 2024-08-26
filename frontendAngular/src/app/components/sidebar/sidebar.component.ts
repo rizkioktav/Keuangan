@@ -21,15 +21,15 @@ export class SidebarComponent implements OnInit {
       }
     );
 
-    this.router.events.subscribe(event => {
-      if (event instanceof NavigationEnd) {
-        this.checkIfSubmenuActive(event.urlAfterRedirects);
-      }
-    });
+    // this.router.events.subscribe(event => {
+    //   if (event instanceof NavigationEnd) {
+    //     this.checkIfSubmenuActive(event.urlAfterRedirects);
+    //   }
+    // });
   }
 
-  checkIfSubmenuActive(url: string): void {
-    const submenuPaths = ['pemasukan', 'pengeluaran', 'hutang', 'piutang', 'tanam-modal', 'tarik-modal', 'transfer-uang'];
-    this.isTransaksiActive = url.includes('transaksi') || submenuPaths.some(path => url.includes(path));
-  }
+//   checkIfSubmenuActive(url: string): void {
+//     const submenuPaths = ['pemasukan', 'pengeluaran', 'hutang', 'piutang', 'tanam-modal', 'tarik-modal', 'transfer-uang'];
+//     this.isTransaksiActive = url.includes('transaksi') || submenuPaths.some(path => url.includes(path));
+//   }
 }

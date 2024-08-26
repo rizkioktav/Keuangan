@@ -1,1 +1,120 @@
-<p>jurnal-umum works!</p>
+<div class="container-fluid py-4">
+  <div class="card">
+    <div class="card-header pb-0">
+      <div class="col-lg-6 col-7 align-items-center">
+        <h4 class="mb-0">Jurnal Umum</h4>
+      </div>
+      <div class="row">
+        <div class="col-lg-6 col-5 mt-1">
+          <div class="d-flex align-items-center">
+            <div class="me-2">
+              <input type="date" class="form-control form-control-sm" [(ngModel)]="startDate" placeholder="Dari Tanggal">
+            </div>
+            <div class="me-2">
+              <i class="bi bi-arrow-right"></i>
+            </div>
+            <div class="me-2">
+              <input type="date" class="form-control form-control-sm" [(ngModel)]="endDate" placeholder="Sampai Tanggal">
+            </div>
+            <div class="pt-3 ms-1 me-2">
+              <button type="button" class="btn btn-primary btn-sm" (click)="cariLaporan()">Cari</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 col-5">
+          <div class="input-group pt-3">
+            <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
+            <input type="text" class="form-control" placeholder="Cari Transaksi">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body px-0">
+      <div class="table-responsive">
+        <table class="table align-items-center mb-0">
+          <thead>
+            <tr>
+              <th class="text-uppercase text-secondary text-xs font-weight-bolder">Tanggal</th>
+              <th class="text-uppercase text-secondary text-xs font-weight-bolder">Transaksi</th>
+              <th class="text-uppercase text-secondary text-xs font-weight-bolder">Ref</th>
+              <th class="text-uppercase text-secondary text-xs font-weight-bolder">Akun</th>
+              <th class="text-uppercase text-secondary text-xs font-weight-bolder">Debit</th>
+              <th class="text-uppercase text-secondary text-xs font-weight-bolder">Kredit</th>
+              <!-- <th class="text-uppercase text-secondary text-xs font-weight-bolder">Aksi</th> -->
+            </tr>
+          </thead>
+          <tbody>
+            <ng-container *ngFor="let laporan of jurnalSampleData">
+              <tr>
+                <td [attr.rowspan]="laporan.details.length + 1">
+                  <div class="d-flex px-2 ms-2">
+                    <div class="d-flex flex-column justify-content-center">
+                      <span class="text-xs font-weight-bold">{{ laporan.tanggal }}</span>
+                    </div>
+                  </div>
+                </td>
+                <td [attr.rowspan]="laporan.details.length + 1">
+                  <div class="d-flex px-2 ms-2">
+                    <div class="d-flex flex-column justify-content-center">
+                      <span class="text-xs text-secondary">{{ laporan.keterangan }}</span>
+                    </div>
+                  </div>
+                </td>
+                <td [attr.rowspan]="laporan.details.length + 1">
+                  <div class="d-flex px-2 ms-2">
+                    <div class="d-flex flex-column justify-content-center">
+                      <span class="text-xs text-secondary">{{ laporan.ref }}</span>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr *ngFor="let detail of laporan.details">
+                <td>
+                  <div class="d-flex px-2 ms-2">
+                    <div class="d-flex flex-column justify-content-center">
+                      <span class="text-xs font-weight-bold">{{ detail.akun }}</span>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="d-flex px-2 ms-2">
+                    <div class="d-flex flex-column justify-content-center">
+                      <span class="text-xs font-weight-bold">Rp. {{ detail.debit }}</span>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="d-flex px-2 ms-2">
+                    <div class="d-flex flex-column justify-content-center">
+                      <span class="text-xs font-weight-bold">Rp. {{ detail.kredit }}</span>
+                    </div>
+                  </div>
+                </td>
+                <!-- <td>
+                  <div class="d-flex">
+                    <div class="d-flex flex-column justify-content-center">
+                      <a href="javascript:;">
+                        <i class="bi bi-pencil-square text-secondary text-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Transaksi"></i>
+                      </a>
+                    </div>
+                    <div class="d-flex flex-column justify-content-center ms-2">
+                      <a href="javascript:;">
+                        <i class="bi bi-trash text-secondary text-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Hapus Transaksi"></i>
+                      </a>
+                    </div>
+                  </div>
+                </td> -->
+              </tr>
+            </ng-container>
+            <tr>
+              <td colspan="4" class="text-end text-s font-weight-bold"><span>Total :</span></td>
+              <td><span class="text-xs font-weight-bold ps-3">Rp. {{ totalDebitAllTransactions() }}</span></td>
+              <td><span class="text-xs font-weight-bold ps-3">Rp. {{ totalKreditAllTransactions() }}</span></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

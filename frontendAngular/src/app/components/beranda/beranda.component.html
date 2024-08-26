@@ -137,7 +137,7 @@
                 </td>
                 <td>
                   <div class="d-flex justify-content-center">
-                    <button type="button" class="btn bg-gradient-primary mt-1" (click)="openHoverJoin(company)">Gabung</button>
+                    <button type="button" class="btn bg-gradient-primary mt-1" data-bs-toggle="modal" data-bs-target="#joinModal" (click)="joinCompany(company)">Gabung</button>
                   </div>
                 </td>
               </tr>
@@ -146,42 +146,41 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> 
   
-  
-  <div *ngIf="hoveredCardJoin">
-    <div [ngClass]="{'overlay': showOverlay, 'overlay-hide': !showOverlay}" (click)="hideHoverJoin()" (animationend)="onAnimationEnd($event)">
-      <div [ngClass]="{'member-hover-card': showOverlay, 'member-hover-card-hide': !showOverlay}" (click)="$event.stopPropagation()">
-        <div class="card">
-          <div class="card-header d-flex justify-content-between align-items-center">
-            <span>{{ hoveredCompany?.c_nama }}</span>
-            <button type="button" class="btn-close" aria-label="Close" (click)="hideHoverJoin()"></button>
-          </div>
-          <div class="card-body">
-            <form (ngSubmit)="submitForm()">
-              <div class="mb-3">
-                <label for="role" class="form-label">Pilih Role:</label>
-                <select id="role" name="role" class="form-select" [(ngModel)]="selectedRole" required>
-                  <option selected disabled>Pilih role yang anda inginkan</option>
-                  <option value="1">Investor</option>
-                  <option value="3">Komisaris</option>
-                  <option value="4">Direktur</option>
-                  <option value="5">Manager</option>
-                  <option value="6">Supervisor</option>
-                  <option value="7">Staff</option>
-                </select>
-              </div>
-              <div class="d-flex justify-content-end">
-                <button type="submit" class="btn btn-primary">Gabung</button>
-              </div>
-            </form>
-          </div>
+  <!-- Modal -->
+  <div class="modal fade" id="joinModal" tabindex="-1" aria-labelledby="joinModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="joinModalLabel">{{ getCompany?.c_nama }}</h5>
+          <a href="javascript:;">
+            <i class="bi bi-x-lg" data-bs-dismiss="modal" aria-label="Close"></i>
+          </a>
+        </div>
+        <div class="modal-body">
+          <form (ngSubmit)="submitForm()">
+            <div class="mb-3">
+              <label for="role" class="form-label">Pilih Role:</label>
+              <select id="role" name="role" class="form-select" [(ngModel)]="selectedRole" required>
+                <option selected disabled>Pilih role yang anda inginkan</option>
+                <option value="1">Investor</option>
+                <option value="3">Komisaris</option>
+                <option value="4">Direktur</option>
+                <option value="5">Manager</option>
+                <option value="6">Supervisor</option>
+                <option value="7">Staff</option>
+              </select>
+            </div>
+            <div class="d-flex justify-content-end">
+              <button type="submit" class="btn btn-primary">Gabung</button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
   </div>
-  
-  
+
   <!-- <footer class="footer pt-3  ">
     <div class="container-fluid">
       <div class="row align-items-center justify-content-lg-between">

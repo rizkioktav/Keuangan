@@ -1,1 +1,85 @@
-<p>periode works!</p>
+<div class="container-fluid py-4">
+  <div class="card">
+    <div class="card-header pb-0">
+      <div class="col-lg-6 col-7 align-items-center">
+        <h4 class="mb-0">Laporan Periode</h4>
+      </div>
+      <div class="row">
+        <div class="col-lg-6 col-5 mt-1">
+          <div class="d-flex align-items-center">
+            <div class="me-2">
+              <input type="date" class="form-control form-control-sm" [(ngModel)]="startDate" placeholder="Dari Tanggal">
+            </div>
+            <div class="me-2">
+              <i class="bi bi-arrow-right"></i>
+            </div>
+            <div class="me-2">
+              <input type="date" class="form-control form-control-sm" [(ngModel)]="endDate" placeholder="Sampai Tanggal">
+            </div>
+            <div class="pt-3 ms-1 me-2">
+              <button type="button" class="btn btn-primary btn-sm" (click)="cariLaporan()">Cari</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 col-5">
+          <div class="input-group pt-3">
+            <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
+            <input type="text" class="form-control" placeholder="Cari Akun">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body px-0">
+      <div class="table-responsive">
+        <table class="table align-items-center mb-0">
+          <thead>
+            <tr>
+              <th class="text-uppercase text-secondary text-s font-weight-bold">Kode Akun</th>
+              <th class="text-uppercase text-secondary text-s font-weight-bold">Akun</th>
+              <th class="text-uppercase text-secondary text-s font-weight-bold">Saldo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <ng-container *ngFor="let laporan of laporanSampleData">
+              <tr>
+                <td colspan="3" class="font-weight-bold text-primary ps-4">{{ laporan.header }}</td>
+              </tr>
+              <tr *ngFor="let detail of laporan.details">
+                <td>
+                  <div class="d-flex px-2 ms-2">
+                    <div class="d-flex flex-column justify-content-center">
+                      <span class="text-xs font-weight-bold">{{ detail.kodeAkun }}</span>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="d-flex px-2 ms-2">
+                    <div class="d-flex flex-column justify-content-center">
+                      <span class="text-xs font-weight-bold">{{ detail.namaAkun }}</span>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="d-flex px-2 ms-2">
+                    <div class="d-flex flex-column justify-content-center">
+                      <span class="text-xs font-weight-bold">Rp. {{ detail.saldo | number }}</span>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td class="font-weight-bold"> 
+                  <span class="text-xs font-weight-bolder ps-3">Total {{ laporan.header }}</span>
+                </td>
+                <td class="font-weight-bold"> 
+                  <span class="text-xs font-weight-bolder ps-3">Rp. {{ laporan.total | number }}</span>
+                </td>
+              </tr>
+            </ng-container>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
